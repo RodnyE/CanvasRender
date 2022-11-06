@@ -1,27 +1,49 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <script src="canvas.min.js"></script>
-</head>
+
+<head></head>
 
 <body>
-  <canvas id="canvas" width="300" height="300"></canvas>
+  <canvas 
+      id="canvas" 
+      width="300" 
+      height="300"
+      style="border: solid">
+  </canvas>
 
+
+  <!-- using minified version -->
+  <script src="canvas.min.js"></script>
   <script>
+    
+    // creating CanvasRender
     let canvas = document.getElementById("canvas");
     let renderer = new CANVAS.Renderer(canvas);
-
+    
+    // container
     let stage = new CANVAS.Container();
+    
+    // texture
     let texture = new CANVAS.Texture("ship.png");
+    
+    // image
     let sprite = new CANVAS.Sprite(texture);
     sprite.preserveAspectRatio = true;
     sprite.width = 100;
     sprite.x = 5;
+    sprite.y = 0;
     
+    // adding image to container
     stage.addChild(sprite);
     
+    // animation
     loop();
     function loop () {
+      // move sprite in loop
+      sprite.y += 0.5;
+      sprite.x += 0.58;
+      
+      // render the container in canvas
       renderer.render(stage);
       window.requestAnimationFrame( loop );
     }
