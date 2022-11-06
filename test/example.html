@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <script src="canvas.min.js"></script>
+</head>
+
+<body>
+  <canvas id="canvas" width="300" height="300"></canvas>
+
+  <script>
+    let canvas = document.getElementById("canvas");
+    let renderer = new CANVAS.Renderer(canvas);
+
+    let stage = new CANVAS.Container();
+    let texture = new CANVAS.Texture("ship.png");
+    let sprite = new CANVAS.Sprite(texture);
+    sprite.preserveAspectRatio = true;
+    sprite.width = 100;
+    sprite.x = 5;
+    
+    stage.addChild(sprite);
+    
+    loop();
+    function loop () {
+      renderer.render(stage);
+      window.requestAnimationFrame( loop );
+    }
+  </script>
+</body>
+</html>

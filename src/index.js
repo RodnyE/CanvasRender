@@ -1,0 +1,2 @@
+// archivo principal
+window.CANVAS = {};
